@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+    <!-- Incluindo a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width:80%;">
+        <canvas id="chart1"></canvas>
+    </div>
+    <div style="width:80%;">
+        <canvas id="chart2"></canvas>
+    </div>
+    <div style="width:100%;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // Dados do primeiro gráfico (substitua com seus próprios dados)
+        var doughnutLabels = ["polietileno", "polipropileno", "policloreto de vinila", "polietileno tereftalato", "poliestireno","plastico de engenharia"];
+        var doughnutData = [31.9, 21.6, 13.6, 8.1, 9.1, 6.6];
+
+        // Criando o primeiro gráfico
+        var ctx1 = document.getElementById('chart1').getContext('2d');
+        var doughnutChart = new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: doughnutLabels,
+                datasets: [{
+                    label: 'Porcentagem dos plásticos mais utilizados',
+                    data: doughnutData,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(0,255,0, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(0,255,0, 0.2)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Meu Gráfico de Setores'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        });
+
+        // Dados do segundo gráfico (substitua com seus próprios dados)
+        var barLabels = ["1990", "1995","2000", "2005","2010", "2015", "2019","2030"];
+        var barData = [590000, 360000, 430000, 220000, 860000, 1450000,2330000,2500000];
+
+        // Criando o segundo gráfico
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+        var barChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: barLabels,
+                datasets: [{
+                    label: 'Plásticos mais descartados nos oceanos',
+                    data: barData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        // Dados do terceiro gráfico (substitua com seus próprios dados)
+        var lineLabels = ["1990", "2000", "2010", "2020", "2030"];
+        var lineData = [1000000, 1500000, 2750000, 3680000, 6000000];
+
+        // Criando o terceiro gráfico
+        var ctx3 = document.getElementById('myChart').getContext('2d');
+        var lineChart = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: lineLabels,
+                datasets: [{
+                    label: 'Crescimento Mundial Da Produção de Plastico',
+                    data: lineData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
